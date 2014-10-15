@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>204BE92D-1316-4ED9-85D6-43910FFADAF3</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Chaplaincy</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>42E8A33E-6E0D-4C7A-B5BA-0C5568E584A5</key>
+		<string>https://github.com/sifoo/MC.git</string>
+		<key>6D6C814D1583F8FA101C397834ED1B223749A389</key>
+		<string>https://github.com/anasfaris/chaplaincy.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Chaplaincy.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>42E8A33E-6E0D-4C7A-B5BA-0C5568E584A5</key>
+		<string>../../../MC</string>
+		<key>6D6C814D1583F8FA101C397834ED1B223749A389</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/anasfaris/chaplaincy.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>6D6C814D1583F8FA101C397834ED1B223749A389</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>6D6C814D1583F8FA101C397834ED1B223749A389</string>
+			<key>IDESourceControlWCCName</key>
+			<string>chaplaincy</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>42E8A33E-6E0D-4C7A-B5BA-0C5568E584A5</string>
+			<key>IDESourceControlWCCName</key>
+			<string>MC</string>
+		</dict>
+	</array>
+</dict>
+</plist>
