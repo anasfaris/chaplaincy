@@ -70,7 +70,7 @@
     MFMailComposeViewController *mailComposer = [[MFMailComposeViewController alloc] init];
     mailComposer.mailComposeDelegate = self;
     [mailComposer setSubject:@"Chaplaincy App Feedback"];
-    [mailComposer setToRecipients:@[@"sifooparadox@gmail.com"]];
+    [mailComposer setToRecipients:@[@"anasfaris@yahoo.com"]];
     
     [self presentViewController:mailComposer animated:YES completion:nil];
      
