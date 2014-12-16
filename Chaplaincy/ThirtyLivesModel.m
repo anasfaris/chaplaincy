@@ -8,6 +8,7 @@
 
 #import "ThirtyLivesModel.h"
 #import "ThirtyLives.h"
+#import "AFHTTPRequestOperation.h"
 
 @implementation ThirtyLivesModel
 
@@ -17,6 +18,20 @@
     // Download the json file
     NSURL *jsonFileUrl = [NSURL URLWithString:@"http://sifoo.org/lives30.json"];
     NSData *jsonData = [[NSData alloc] initWithContentsOfURL:jsonFileUrl];
+    
+    //AFNetworking Method
+    NSURL *url = [[NSURL alloc] initWithString:@"https://s3.amazonaws.com/mcuoft/programData.json"];
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"success: %@", operation.responseString);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error: %@",  operation.responseString);
+    }];
+    
+    [operation start];
+    
+    
     
     // Parse the json file
     NSError *error;
