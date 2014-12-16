@@ -15,6 +15,6 @@
 @property (strong, nonatomic) NSString *dayAndTime;
 @property (strong, nonatomic) NSString *location;
 @property (strong, nonatomic) NSString *img;
-@property (strong, nonatomic) NSString *description;
+@property (strong, nonatomic) NSString *desc;
 
 @end

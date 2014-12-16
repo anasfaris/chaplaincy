@@ -74,7 +74,7 @@
     dateLabel.text = item.startingDate;
     timeLabel.text = item.dayAndTime;
     locationLabel.text = item.location;
-    descriptionLabel.text = item.description;
+    descriptionLabel.text = item.desc;
     [descriptionLabel sizeToFit];
 
     

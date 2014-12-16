@@ -37,7 +37,7 @@
         item1.startingDate = jsonElement[@"programDate"];
         item1.dayAndTime = jsonElement[@"programDay"];
         item1.location = jsonElement[@"programLocation"];
-        item1.description = jsonElement[@"programDescription"];
+        item1.desc = jsonElement[@"programDescription"];
         item1.img = jsonElement[@"programImage"];
         [programItemArray addObject:item1];
     }

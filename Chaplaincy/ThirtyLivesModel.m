@@ -35,7 +35,7 @@
         ThirtyLives *live = [[ThirtyLives alloc] init];
         live.name = jsonElement[@"livesName"];
         live.caption = jsonElement[@"livesCaption"];
-        live.description = jsonElement[@"livesStory"];
+        live.desc = jsonElement[@"livesStory"];
         live.imageName = jsonElement[@"livesPicture"];
         
         [thirtyItemArray addObject:live];

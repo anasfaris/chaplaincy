@@ -15,6 +15,6 @@
 @property (strong, nonatomic) NSString *caption;
 @property (strong, nonatomic) NSString *job;
 @property (strong, nonatomic) NSString *contribution;
-@property (strong, nonatomic) NSString *description;
+@property (strong, nonatomic) NSString *desc;
 
 @end
