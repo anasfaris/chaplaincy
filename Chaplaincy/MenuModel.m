@@ -27,13 +27,13 @@
     [menuItemArray addObject:item2];
     
     MenuItem *item3 = [[MenuItem alloc] init];
-    item3.menuTitle = @"PROGRAMS";
+    item3.menuTitle = @"PROGRAMMING";
     item3.menuIcon = @"IconPrograms";
     item3.screenType = ScreenTypePrograms;
     [menuItemArray addObject:item3];
     
     MenuItem *item4 = [[MenuItem alloc] init];
-    item4.menuTitle = @"SERMONS";
+    item4.menuTitle = @"RECORDINGS";
     item4.menuIcon = @"IconSermons";
     item4.screenType = ScreenTypeSermons;
     [menuItemArray addObject:item4];
@@ -45,7 +45,7 @@
     [menuItemArray addObject:item5];
     
     MenuItem *item6 = [[MenuItem alloc] init];
-    item6.menuTitle = @"DONATE";
+    item6.menuTitle = @"ABOUT US";
     item6.menuIcon = @"IconDonate";
     item6.screenType = ScreenTypeDonate;
     [menuItemArray addObject:item6];

@@ -10,7 +10,6 @@
 #import "SWRevealViewController.h"
 #import "DetailViewController.h"
 #import "AFHTTPRequestOperation.h"
-#import "DetailViewController.h"
 
 @interface ThirtyLivesViewController ()
 
@@ -39,7 +38,6 @@
     
     //AFNetworking Method
     NSURL *url = [[NSURL alloc] initWithString:@"http://s3.amazonaws.com/mcuoft/lives30.json"];
-//    NSURLRequest *request2 = [[NSURLRequest alloc] initWithURL:url];
     
     NSURLRequest *request = [NSURLRequest requestWithURL:url
                                             cachePolicy:NSURLRequestReturnCacheDataElseLoad

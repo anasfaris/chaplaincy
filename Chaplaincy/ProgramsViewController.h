@@ -7,8 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ProgramModel.h"
-#import "Program.h"
 
 @interface ProgramsViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
 

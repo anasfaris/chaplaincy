@@ -8,6 +8,7 @@
 
 #import "ProgramsViewController.h"
 #import "SWRevealViewController.h"
+#import "AFHTTPRequestOperation.h"
 
 @interface ProgramsViewController ()
 
@@ -34,7 +35,24 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
-    self.programItem = [[[ProgramModel alloc] init] getProgramItems];
+    //AFNetworking Method
+    NSURL *url = [[NSURL alloc] initWithString:@"http://s3.amazonaws.com/mcuoft/programData.json"];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:url
+                                             cachePolicy:NSURLRequestReturnCacheDataElseLoad
+                                         timeoutInterval:30.0];
+    
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    operation.responseSerializer = [AFJSONResponseSerializer serializer];
+    operation.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        self.programItem = responseObject;
+        [self.tableView reloadData];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error: %@", error.localizedDescription);
+    }];
+    
+    [operation start];
 }
 
 - (void)didReceiveMemoryWarning
@@ -55,7 +73,7 @@
     UITableViewCell *programCell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
     // Get program item that it's asking for
-    Program *item = self.programItem[indexPath.row];
+    NSDictionary *item = self.programItem[indexPath.row];
     
     // Set the program item and details
     //programCell.textLabel.text = item.title;
@@ -67,17 +85,15 @@
     
     // Set the image
     UIImageView *imageView = (UIImageView*)[programCell.contentView viewWithTag:6];
-    NSString *fileName = item.img;
+    NSString *fileName = item[@"programImage"];
     [imageView setImage:[UIImage imageNamed:fileName]];
     
-    titleLabel.text = item.title;
-    dateLabel.text = item.startingDate;
-    timeLabel.text = item.dayAndTime;
-    locationLabel.text = item.location;
-    descriptionLabel.text = item.desc;
+    titleLabel.text = item[@"programName"];
+    dateLabel.text = item[@"programDate"];
+    timeLabel.text = item[@"programDay"];
+    locationLabel.text = item[@"programLocation"];
+    descriptionLabel.text = item[@"programDescription"];
     [descriptionLabel sizeToFit];
-
-    
     
     return programCell;
 }

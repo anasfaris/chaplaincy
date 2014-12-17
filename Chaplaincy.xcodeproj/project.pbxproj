@@ -38,8 +38,6 @@
 		A8EFE536193CD05B0005A144 /* MenuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A8EFE535193CD05B0005A144 /* MenuModel.m */; };
 		A8EFE539193CD08E0005A144 /* MenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A8EFE538193CD08E0005A144 /* MenuItem.m */; };
 		A8EFE544193D28D80005A144 /* mc_program.json in Resources */ = {isa = PBXBuildFile; fileRef = A8EFE543193D28D80005A144 /* mc_program.json */; };
-		A8EFE54A193D29D80005A144 /* Program.m in Sources */ = {isa = PBXBuildFile; fileRef = A8EFE549193D29D80005A144 /* Program.m */; };
-		A8EFE54D193D2AAD0005A144 /* ProgramModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A8EFE54C193D2AAD0005A144 /* ProgramModel.m */; };
 		A8EFE551193E2C0C0005A144 /* HomeItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A8EFE550193E2C0C0005A144 /* HomeItem.m */; };
 		A8EFE554193E2C180005A144 /* HomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A8EFE553193E2C180005A144 /* HomeModel.m */; };
 		A8F779361946168200F01C82 /* DetailHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8F779351946168200F01C82 /* DetailHomeViewController.m */; };
@@ -107,10 +105,6 @@
 		A8EFE537193CD08E0005A144 /* MenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuItem.h; sourceTree = "<group>"; };
 		A8EFE538193CD08E0005A144 /* MenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuItem.m; sourceTree = "<group>"; };
 		A8EFE543193D28D80005A144 /* mc_program.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mc_program.json; sourceTree = "<group>"; };
-		A8EFE548193D29D80005A144 /* Program.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Program.h; sourceTree = "<group>"; };
-		A8EFE549193D29D80005A144 /* Program.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Program.m; sourceTree = "<group>"; };
-		A8EFE54B193D2AAD0005A144 /* ProgramModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgramModel.h; sourceTree = "<group>"; };
-		A8EFE54C193D2AAD0005A144 /* ProgramModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgramModel.m; sourceTree = "<group>"; };
 		A8EFE54F193E2C0C0005A144 /* HomeItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeItem.h; sourceTree = "<group>"; };
 		A8EFE550193E2C0C0005A144 /* HomeItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeItem.m; sourceTree = "<group>"; };
 		A8EFE552193E2C180005A144 /* HomeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeModel.h; sourceTree = "<group>"; };
@@ -317,10 +311,6 @@
 			children = (
 				A8EFE528193CCEAE0005A144 /* ProgramsViewController.h */,
 				A8EFE529193CCEAE0005A144 /* ProgramsViewController.m */,
-				A8EFE548193D29D80005A144 /* Program.h */,
-				A8EFE549193D29D80005A144 /* Program.m */,
-				A8EFE54B193D2AAD0005A144 /* ProgramModel.h */,
-				A8EFE54C193D2AAD0005A144 /* ProgramModel.m */,
 			);
 			name = Programs;
 			sourceTree = "<group>";
@@ -481,8 +471,6 @@
 			files = (
 				A8EFE527193CCEA00005A144 /* CounsellingViewController.m in Sources */,
 				A8EFE4FE193CCD550005A144 /* ViewController.m in Sources */,
-				A8EFE54A193D29D80005A144 /* Program.m in Sources */,
-				A8EFE54D193D2AAD0005A144 /* ProgramModel.m in Sources */,
 				A8EFE530193CCECB0005A144 /* ThirtyLivesViewController.m in Sources */,
 				A8EFE4F8193CCD550005A144 /* AppDelegate.m in Sources */,
 				A8EFE536193CD05B0005A144 /* MenuModel.m in Sources */,
