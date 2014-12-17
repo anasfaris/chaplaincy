@@ -42,6 +42,7 @@
 		A8EFE554193E2C180005A144 /* HomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A8EFE553193E2C180005A144 /* HomeModel.m */; };
 		A8F779361946168200F01C82 /* DetailHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8F779351946168200F01C82 /* DetailHomeViewController.m */; };
 		D32F6A22F657B52337C670EE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A65ACD0C8C0E78AB39A8369D /* libPods.a */; };
+		EE8B4B491A41C609006F2538 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE8B4B481A41C609006F2538 /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +112,8 @@
 		A8EFE553193E2C180005A144 /* HomeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeModel.m; sourceTree = "<group>"; };
 		A8F779341946168200F01C82 /* DetailHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailHomeViewController.h; sourceTree = "<group>"; };
 		A8F779351946168200F01C82 /* DetailHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailHomeViewController.m; sourceTree = "<group>"; };
+		EE8B4B481A41C609006F2538 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		EE8B4B4A1A41CA46006F2538 /* libPods-CocoaSoundCloudAPI.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-CocoaSoundCloudAPI.a"; path = "Pods/build/Debug-iphoneos/libPods-CocoaSoundCloudAPI.a"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +121,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE8B4B491A41C609006F2538 /* AVFoundation.framework in Frameworks */,
 				A8D78BB31942182900225A9F /* iAd.framework in Frameworks */,
 				A81D4EB2193E5BB200F5A571 /* MessageUI.framework in Frameworks */,
 				A8EFE4EA193CCD550005A144 /* CoreGraphics.framework in Frameworks */,
@@ -229,6 +233,8 @@
 		A8EFE4E6193CCD550005A144 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EE8B4B4A1A41CA46006F2538 /* libPods-CocoaSoundCloudAPI.a */,
+				EE8B4B481A41C609006F2538 /* AVFoundation.framework */,
 				A8D78BB21942182900225A9F /* iAd.framework */,
 				A81D4EB1193E5BB200F5A571 /* MessageUI.framework */,
 				A8EFE4E7193CCD550005A144 /* Foundation.framework */,
@@ -567,7 +573,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -599,7 +605,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -616,6 +622,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Chaplaincy/Chaplaincy-Prefix.pch";
 				INFOPLIST_FILE = "Chaplaincy/Chaplaincy-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -633,6 +643,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Chaplaincy/Chaplaincy-Prefix.pch";
 				INFOPLIST_FILE = "Chaplaincy/Chaplaincy-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;

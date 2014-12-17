@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-StreamingKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -17,12 +22,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>00821B469F579D8FFD5B7F45</key>
+		<key>6E6437F01C1EE8044C6078CF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5DDBF23025DF72C3F1B14A13</key>
+		<key>CE3FE19B10AE897A451A26AA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FDF470F5E4776E47A948F4CF</key>
 		<dict>
 			<key>primary</key>
 			<true/>

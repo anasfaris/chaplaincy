@@ -8,10 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SermonsViewController : UIViewController
+@interface SermonsViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic, strong) IBOutlet UIWebView *webView;
-@property (nonatomic, strong) IBOutlet UIActivityIndicatorView *indicator;
-@property (nonatomic, strong) NSTimer *timer;
+@property (strong, nonatomic) NSArray *programItem;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
