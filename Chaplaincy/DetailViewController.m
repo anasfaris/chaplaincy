@@ -29,10 +29,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.nameLabel.text = self.detailLives.name;
-    self.contributionLabel.text = self.detailLives.contribution;
-    self.captionLabel.text = self.detailLives.caption;
-    self.descriptionLabel.text = self.detailLives.description;
+    self.nameLabel.text = [self.heroes objectForKey:@"livesName"];
+    self.contributionLabel.text = [self.heroes objectForKey:@"livesMajor"];
+    self.captionLabel.text = [self.heroes objectForKey:@"livesCaption"];
+    self.descriptionLabel.text = [self.heroes objectForKey:@"livesStory"];
     [self.descriptionLabel sizeToFit];
     
     // Set content size of scrollview

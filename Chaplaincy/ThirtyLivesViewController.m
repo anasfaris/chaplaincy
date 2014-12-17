@@ -9,10 +9,10 @@
 #import "ThirtyLivesViewController.h"
 #import "SWRevealViewController.h"
 #import "DetailViewController.h"
+#import "AFHTTPRequestOperation.h"
+#import "DetailViewController.h"
 
-@interface ThirtyLivesViewController () {
-    ThirtyLives *_selectedLives;
-}
+@interface ThirtyLivesViewController ()
 
 @end
 
@@ -37,7 +37,25 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
-    self.thirtyItem = [[[ThirtyLivesModel alloc] init] getThirtyItems];
+    //AFNetworking Method
+    NSURL *url = [[NSURL alloc] initWithString:@"http://s3.amazonaws.com/mcuoft/lives30.json"];
+//    NSURLRequest *request2 = [[NSURLRequest alloc] initWithURL:url];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:url
+                                            cachePolicy:NSURLRequestReturnCacheDataElseLoad
+                                        timeoutInterval:30.0];
+    
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    operation.responseSerializer = [AFJSONResponseSerializer serializer];
+    operation.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        self.thirtyItem = responseObject;
+        [self.tableView reloadData];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error: %@", error.localizedDescription);
+    }];
+    
+    [operation start];
 }
 
 - (void)didReceiveMemoryWarning
@@ -47,7 +65,7 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.thirtyItem.count;
+    return [self.thirtyItem count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -56,19 +74,24 @@
     UITableViewCell *thirtyCell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
     // Get program item that it's asking for
-    ThirtyLives *item = self.thirtyItem[indexPath.row];
     
     UILabel *nameLabel = (UILabel *)[thirtyCell.contentView viewWithTag:2];
     
     UIFont *museoFiqFont = [UIFont fontWithName:@"GothamBook" size:15.0];
     
+    NSDictionary *tempDict = [self.thirtyItem objectAtIndex:indexPath.row];
+    
+//    live.caption = jsonElement[@"livesCaption"];
+//    live.desc = jsonElement[@"livesStory"];
+//    live.imageName = jsonElement[@"livesPicture"];
+    
     // Set menu item text and icon
-    nameLabel.text = item.name;
+    nameLabel.text = [tempDict objectForKey:@"livesName"];
     nameLabel.font = museoFiqFont;
     
     NSAttributedString *attributedString =
     [[NSAttributedString alloc]
-     initWithString:item.name
+     initWithString:[tempDict objectForKey:@"livesName"]
      attributes:
      @{
        NSFontAttributeName : museoFiqFont,
@@ -82,23 +105,22 @@
     
     // Set the image
     UIImageView *imageView = (UIImageView*)[thirtyCell.contentView viewWithTag:1];
-    NSString *fileName = item.imageName;
+    NSString *fileName = [tempDict objectForKey:@"livesPicture"];
     [imageView setImage:[UIImage imageNamed:fileName]];
     
     return thirtyCell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    _selectedLives = self.thirtyItem[indexPath.row];
-    
     // Manually call segue to detail view controller
     [self performSegueWithIdentifier:@"GoToDetailSegue" sender:self];
     
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
     DetailViewController *detailVC = segue.destinationViewController;
-    detailVC.detailLives = _selectedLives;
+    detailVC.heroes = [self.thirtyItem objectAtIndex:indexPath.row];
     
     
     // Set the front view controller to be the destination one

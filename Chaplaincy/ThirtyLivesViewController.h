@@ -7,8 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ThirtyLives.h"
-#import "ThirtyLivesModel.h"
 
 @interface ThirtyLivesViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
 

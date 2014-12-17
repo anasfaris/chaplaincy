@@ -12,6 +12,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    NSURLCache *cache = [[NSURLCache alloc] initWithMemoryCapacity:4 * 1024 * 1024
+                                                         diskCapacity:32 * 1024 * 1024
+                                                             diskPath:@"app_cache"];
+    [NSURLCache setSharedURLCache:cache];
  /*
     for (NSString* family in [UIFont familyNames])
     {
@@ -28,6 +32,10 @@
     
     // Override point for customization after application launch.
     return YES;
+}
+
+-(void)applicationDidReceiveMemoryWarning:(UIApplication *)application {
+    [[NSURLCache sharedURLCache] removeAllCachedResponses];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
