@@ -37,7 +37,7 @@
     self.tableView.dataSource = self;
     
     //AFNetworking Method
-    NSURL *url = [[NSURL alloc] initWithString:@"http://s3.amazonaws.com/mcuoft/lives30.json"];
+    NSURL *url = [[NSURL alloc] initWithString:@"https://dl.dropboxusercontent.com/u/265794/lives30.json"];
     
     NSURLRequest *request = [NSURLRequest requestWithURL:url
                                             cachePolicy:NSURLRequestReturnCacheDataElseLoad
@@ -72,17 +72,10 @@
     UITableViewCell *thirtyCell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
     // Get program item that it's asking for
-    
     UILabel *nameLabel = (UILabel *)[thirtyCell.contentView viewWithTag:2];
-    
     UIFont *museoFiqFont = [UIFont fontWithName:@"GothamBook" size:15.0];
-    
     NSDictionary *tempDict = [self.thirtyItem objectAtIndex:indexPath.row];
-    
-//    live.caption = jsonElement[@"livesCaption"];
-//    live.desc = jsonElement[@"livesStory"];
-//    live.imageName = jsonElement[@"livesPicture"];
-    
+
     // Set menu item text and icon
     nameLabel.text = [tempDict objectForKey:@"livesName"];
     nameLabel.font = museoFiqFont;
@@ -90,16 +83,8 @@
     NSAttributedString *attributedString =
     [[NSAttributedString alloc]
      initWithString:[tempDict objectForKey:@"livesName"]
-     attributes:
-     @{
-       NSFontAttributeName : museoFiqFont,
-       NSKernAttributeName : @(2.0f)
-       }];
-    
+     attributes: @{ NSFontAttributeName : museoFiqFont,NSKernAttributeName : @(2.0f) }];
     nameLabel.attributedText = attributedString;
-    
-  //  UILabel *nameLabel = (UILabel *) [thirtyCell.contentView viewWithTag:2];
-   // nameLabel.text = item.name;
     
     // Set the image
     UIImageView *imageView = (UIImageView*)[thirtyCell.contentView viewWithTag:1];

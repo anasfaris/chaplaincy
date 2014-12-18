@@ -14,6 +14,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *captionLabel;
 @property (strong, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (strong, nonatomic) IBOutlet UIScrollView *detailScrollView;
+@property (strong, nonatomic) IBOutlet UIImageView *imgView;
 
 @property (strong, nonatomic) NSDictionary *heroes;
 
