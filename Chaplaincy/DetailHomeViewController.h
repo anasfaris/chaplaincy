@@ -10,4 +10,8 @@
 
 @interface DetailHomeViewController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UIImageView *programImg;
+@property (strong, nonatomic) NSDictionary *program;
+@property float contentMemory;
+
 @end

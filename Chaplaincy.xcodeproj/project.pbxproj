@@ -38,11 +38,10 @@
 		A8EFE536193CD05B0005A144 /* MenuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A8EFE535193CD05B0005A144 /* MenuModel.m */; };
 		A8EFE539193CD08E0005A144 /* MenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A8EFE538193CD08E0005A144 /* MenuItem.m */; };
 		A8EFE544193D28D80005A144 /* mc_program.json in Resources */ = {isa = PBXBuildFile; fileRef = A8EFE543193D28D80005A144 /* mc_program.json */; };
-		A8EFE551193E2C0C0005A144 /* HomeItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A8EFE550193E2C0C0005A144 /* HomeItem.m */; };
-		A8EFE554193E2C180005A144 /* HomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A8EFE553193E2C180005A144 /* HomeModel.m */; };
 		A8F779361946168200F01C82 /* DetailHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8F779351946168200F01C82 /* DetailHomeViewController.m */; };
 		D32F6A22F657B52337C670EE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A65ACD0C8C0E78AB39A8369D /* libPods.a */; };
 		EE8B4B491A41C609006F2538 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE8B4B481A41C609006F2538 /* AVFoundation.framework */; };
+		EE9EF72E1A43778F00BE333A /* PlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE9EF72D1A43778F00BE333A /* PlayViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,14 +105,12 @@
 		A8EFE537193CD08E0005A144 /* MenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuItem.h; sourceTree = "<group>"; };
 		A8EFE538193CD08E0005A144 /* MenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuItem.m; sourceTree = "<group>"; };
 		A8EFE543193D28D80005A144 /* mc_program.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mc_program.json; sourceTree = "<group>"; };
-		A8EFE54F193E2C0C0005A144 /* HomeItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeItem.h; sourceTree = "<group>"; };
-		A8EFE550193E2C0C0005A144 /* HomeItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeItem.m; sourceTree = "<group>"; };
-		A8EFE552193E2C180005A144 /* HomeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeModel.h; sourceTree = "<group>"; };
-		A8EFE553193E2C180005A144 /* HomeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeModel.m; sourceTree = "<group>"; };
 		A8F779341946168200F01C82 /* DetailHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailHomeViewController.h; sourceTree = "<group>"; };
 		A8F779351946168200F01C82 /* DetailHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailHomeViewController.m; sourceTree = "<group>"; };
 		EE8B4B481A41C609006F2538 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		EE8B4B4A1A41CA46006F2538 /* libPods-CocoaSoundCloudAPI.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-CocoaSoundCloudAPI.a"; path = "Pods/build/Debug-iphoneos/libPods-CocoaSoundCloudAPI.a"; sourceTree = "<group>"; };
+		EE9EF72C1A43778F00BE333A /* PlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayViewController.h; sourceTree = "<group>"; };
+		EE9EF72D1A43778F00BE333A /* PlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,10 +163,10 @@
 		A8D78B1B193FCCDA00225A9F /* ThirtyLives */ = {
 			isa = PBXGroup;
 			children = (
-				A8D78B20193FD6C800225A9F /* DetailViewController.h */,
-				A8D78B21193FD6C800225A9F /* DetailViewController.m */,
 				A8EFE52E193CCECB0005A144 /* ThirtyLivesViewController.h */,
 				A8EFE52F193CCECB0005A144 /* ThirtyLivesViewController.m */,
+				A8D78B20193FD6C800225A9F /* DetailViewController.h */,
+				A8D78B21193FD6C800225A9F /* DetailViewController.m */,
 			);
 			name = ThirtyLives;
 			sourceTree = "<group>";
@@ -206,6 +203,8 @@
 			children = (
 				A8EFE52B193CCEBE0005A144 /* SermonsViewController.h */,
 				A8EFE52C193CCEBE0005A144 /* SermonsViewController.m */,
+				EE9EF72C1A43778F00BE333A /* PlayViewController.h */,
+				EE9EF72D1A43778F00BE333A /* PlayViewController.m */,
 			);
 			name = Sermons;
 			sourceTree = "<group>";
@@ -326,10 +325,6 @@
 			children = (
 				A8EFE522193CCDC80005A144 /* HomeViewController.h */,
 				A8EFE523193CCDC80005A144 /* HomeViewController.m */,
-				A8EFE552193E2C180005A144 /* HomeModel.h */,
-				A8EFE553193E2C180005A144 /* HomeModel.m */,
-				A8EFE54F193E2C0C0005A144 /* HomeItem.h */,
-				A8EFE550193E2C0C0005A144 /* HomeItem.m */,
 				A8F779341946168200F01C82 /* DetailHomeViewController.h */,
 				A8F779351946168200F01C82 /* DetailHomeViewController.m */,
 			);
@@ -488,9 +483,8 @@
 				A8EFE52A193CCEAE0005A144 /* ProgramsViewController.m in Sources */,
 				A8EFE533193CCED90005A144 /* DonateViewController.m in Sources */,
 				A8D78B22193FD6C800225A9F /* DetailViewController.m in Sources */,
-				A8EFE551193E2C0C0005A144 /* HomeItem.m in Sources */,
-				A8EFE554193E2C180005A144 /* HomeModel.m in Sources */,
 				A8EFE521193CCDB70005A144 /* MenuViewController.m in Sources */,
+				EE9EF72E1A43778F00BE333A /* PlayViewController.m in Sources */,
 				A8EFE524193CCDC80005A144 /* HomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

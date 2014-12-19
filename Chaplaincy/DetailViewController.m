@@ -43,7 +43,7 @@
     [self.descriptionLabel sizeToFit];
     
     // Set content size of scrollview
-    self.detailScrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.nameLabel.frame.size.height + self.captionLabel.frame.size.height + self.descriptionLabel.frame.size.height + self.contributionLabel.frame.size.height + 10);
+    self.detailScrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.descriptionLabel.frame.size.height + 30);
     
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
 }
@@ -51,9 +51,13 @@
 - (IBAction)testPressed:(id)sender {
     [self performSegueWithIdentifier:@"GoBackToThirtySegue" sender:self];
 }
+- (IBAction)hiddenPressed:(id)sender {
+    [self performSegueWithIdentifier:@"GoBackToThirtySegue" sender:self];
+}
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     ThirtyLivesViewController *thirtyVC = segue.destinationViewController;
+    thirtyVC.contentMemoryOffset = self.contentMemory;
     
     // Set the front view controller to be the destination one
     [self.revealViewController setFrontViewController:segue.destinationViewController];

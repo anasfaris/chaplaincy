@@ -10,11 +10,8 @@
 #import <MessageUI/MessageUI.h>
 #import <iAd/iAd.h>
 
-@interface DonateViewController : UIViewController<MFMailComposeViewControllerDelegate, ADBannerViewDelegate>
-@property (strong, nonatomic) IBOutlet UIButton *feedbackButton;
-@property (strong, nonatomic) IBOutlet UIButton *rateButton;
+@interface DonateViewController : UIViewController<MFMailComposeViewControllerDelegate>
+
 @property (strong, nonatomic) IBOutlet UIButton *donateButton;
-@property (weak, nonatomic) IBOutlet UILabel *aboutHeader;
-@property (weak, nonatomic) IBOutlet UILabel *devHeader;
 
 @end

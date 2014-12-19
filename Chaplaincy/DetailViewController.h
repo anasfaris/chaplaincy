@@ -17,5 +17,6 @@
 @property (strong, nonatomic) IBOutlet UIImageView *imgView;
 
 @property (strong, nonatomic) NSDictionary *heroes;
+@property float contentMemory;
 
 @end

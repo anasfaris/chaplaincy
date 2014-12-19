@@ -7,14 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "HomeItem.h"
-#import "HomeModel.h"
 
 @interface HomeViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) NSArray *homeItem;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property float contentMemoryOffset;
 
 
 @end

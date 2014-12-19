@@ -36,7 +36,7 @@
     self.tableView.dataSource = self;
     
     //AFNetworking Method
-    NSURL *url = [[NSURL alloc] initWithString:@"http://s3.amazonaws.com/mcuoft/programData.json"];
+    NSURL *url = [[NSURL alloc] initWithString:@"https://dl.dropboxusercontent.com/u/265794/programData.json"];
     
     NSURLRequest *request = [NSURLRequest requestWithURL:url
                                              cachePolicy:NSURLRequestReturnCacheDataElseLoad

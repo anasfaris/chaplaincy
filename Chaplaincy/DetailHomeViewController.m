@@ -7,6 +7,9 @@
 //
 
 #import "DetailHomeViewController.h"
+#import "HomeViewController.h"
+#import "SWRevealViewController.h"
+#import "ThirtyLivesViewController.h"
 
 @interface DetailHomeViewController ()
 
@@ -27,6 +30,14 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [self.programImg setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@Program",self.program[@"programImage"]]]];
+    
+    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+}
+- (IBAction)backPressed:(id)sender {
+    [self performSegueWithIdentifier:@"GoBackToHomeSegue" sender:self];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -35,15 +46,17 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    HomeViewController *homeVC = segue.destinationViewController;
+    homeVC.contentMemoryOffset = self.contentMemory;
+    
+    // Set the front view controller to be the destination one
+    [self.revealViewController setFrontViewController:segue.destinationViewController];
+    
+    
+    // Slide the front view controller back into place
+    [self.revealViewController revealToggleAnimated:YES];
+    
 }
-*/
 
 @end

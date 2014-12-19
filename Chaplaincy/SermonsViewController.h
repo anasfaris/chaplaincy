@@ -12,5 +12,6 @@
 
 @property (strong, nonatomic) NSArray *programItem;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property float contentMemoryOffset;
 
 @end

@@ -13,5 +13,6 @@
 @property (strong, nonatomic) NSArray *thirtyItem;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property float contentMemoryOffset;
 
 @end

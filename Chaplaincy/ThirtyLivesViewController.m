@@ -48,6 +48,9 @@
     operation.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         self.thirtyItem = responseObject;
+        if (self.contentMemoryOffset) {
+            [self.tableView setContentOffset:CGPointMake(0, self.contentMemoryOffset)];
+        }
         [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error: %@", error.localizedDescription);
@@ -104,7 +107,7 @@
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
     DetailViewController *detailVC = segue.destinationViewController;
     detailVC.heroes = [self.thirtyItem objectAtIndex:indexPath.row];
-    
+    detailVC.contentMemory = self.tableView.contentOffset.y;
     
     // Set the front view controller to be the destination one
     [self.revealViewController setFrontViewController:segue.destinationViewController];

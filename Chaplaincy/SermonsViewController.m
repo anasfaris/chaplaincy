@@ -7,21 +7,15 @@
 //
 
 #import "SermonsViewController.h"
+#import "PlayViewController.h"
 #import "SWRevealViewController.h"
 #import "AFHTTPRequestOperation.h"
-#import <AVFoundation/AVFoundation.h>
-#import "STKAudioPlayer.h"
 
 @interface SermonsViewController ()
-
-@property (nonatomic, strong) AVAudioPlayer *player;
 
 @end
 
 @implementation SermonsViewController
-@synthesize player;
-
-STKAudioPlayer* audioPlayer;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -40,8 +34,6 @@ STKAudioPlayer* audioPlayer;
     
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     
-    audioPlayer = [[STKAudioPlayer alloc] init];
-    
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
@@ -57,6 +49,9 @@ STKAudioPlayer* audioPlayer;
     operation.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         self.programItem = responseObject;
+        if (self.contentMemoryOffset) {
+            [self.tableView setContentOffset:CGPointMake(0, self.contentMemoryOffset)];
+        }
         [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error: %@", error.localizedDescription);
@@ -86,49 +81,31 @@ STKAudioPlayer* audioPlayer;
     NSDictionary *item = self.programItem[indexPath.row];
     
     // Set the program item and details
-    //programCell.textLabel.text = item.title;
     UILabel *titleLabel = (UILabel*)[sermonsCell.contentView viewWithTag:1];
-//    UILabel *dateLabel = (UILabel*)[programCell.contentView viewWithTag:2];
-//    UILabel *timeLabel = (UILabel*)[programCell.contentView viewWithTag:3];
-//    UILabel *locationLabel = (UILabel*)[programCell.contentView viewWithTag:4];
-//    UILabel *descriptionLabel = (UILabel*)[programCell.contentView viewWithTag:5];
-    
-    // Set the image
-//    UIImageView *imageView = (UIImageView*)[programCell.contentView viewWithTag:6];
-//    NSString *fileName = item[@"programImage"];
-//    [imageView setImage:[UIImage imageNamed:fileName]];
     
     titleLabel.text = item[@"title"];
-//    self.streamer = item[@"stream_url"];
-//    dateLabel.text = item[@"programDate"];
-//    timeLabel.text = item[@"programDay"];
-//    locationLabel.text = item[@"programLocation"];
-//    descriptionLabel.text = item[@"programDescription"];
-//    [descriptionLabel sizeToFit];
-    [player prepareToPlay];
     return sermonsCell;
 }
 
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSDictionary *track = [self.programItem objectAtIndex:indexPath.row];
-    NSString *getURL = [track objectForKey:@"stream_url"];
-    NSString *streamURL = [NSString stringWithFormat:@"%@?client_id=%@", getURL, @"906e9745181f3cee9d62e886490b164b"];
-//    NSURL *trackURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@", streamURL]];
+    [self performSegueWithIdentifier:@"GoToPlaySegue" sender:self];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    PlayViewController *playVC = segue.destinationViewController;
+    playVC.track = [self.programItem objectAtIndex:indexPath.row];
+    playVC.contentMemory = self.tableView.contentOffset.y;
     
-    [audioPlayer play: streamURL];
+    // Set the front view controller to be the destination one
+    [self.revealViewController setFrontViewController:segue.destinationViewController];
     
-//    [player stop];
-//    
-//    NSURLSessionTask *task = [[NSURLSession sharedSession] dataTaskWithURL:trackURL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-//        // self.player is strong property
-//        player = [[AVAudioPlayer alloc] initWithData:data error:nil];
-//        [player prepareToPlay];
-//        [player play];
-//    }];
-//    
-//    [task resume];
+    // Slide the front view controller back into place
+    [self.revealViewController revealToggleAnimated:YES];
+    
+    
 }
 
 - (BOOL)prefersStatusBarHidden {
