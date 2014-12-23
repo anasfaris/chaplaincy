@@ -7,16 +7,18 @@
 //
 
 #import "SermonsViewController.h"
-#import "PlayViewController.h"
 #import "SWRevealViewController.h"
 #import "AFHTTPRequestOperation.h"
+#import <AVFoundation/AVFoundation.h>
+#import "STKAudioPlayer.h"
 
 @interface SermonsViewController ()
 
 @end
 
 @implementation SermonsViewController
-
+STKAudioPlayer* audioPlayer;
+//NSCache* playings;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -49,9 +51,6 @@
     operation.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         self.programItem = responseObject;
-        if (self.contentMemoryOffset) {
-            [self.tableView setContentOffset:CGPointMake(0, self.contentMemoryOffset)];
-        }
         [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error: %@", error.localizedDescription);
@@ -78,34 +77,49 @@
     UITableViewCell *sermonsCell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
     // Get program item that it's asking for
-    NSDictionary *item = self.programItem[indexPath.row];
+    self.item = self.programItem[indexPath.row];
     
     // Set the program item and details
     UILabel *titleLabel = (UILabel*)[sermonsCell.contentView viewWithTag:1];
     
-    titleLabel.text = item[@"title"];
+    titleLabel.text = self.item[@"title"];
     return sermonsCell;
 }
 
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self performSegueWithIdentifier:@"GoToPlaySegue" sender:self];
+    NSString *getURL = self.item[@"stream_url"];
+    NSString *streamURL = [NSString stringWithFormat:@"%@?client_id=%@", getURL, @"906e9745181f3cee9d62e886490b164b"];
+    
+//    if (playings) {
+//        NSString *onPlay = [playings objectForKey:@"onPlay"];
+//        if ([onPlay isEqualToString:streamURL]) {
+//        } else {
+//            [playings setObject:streamURL forKey:@"onPlay"];
+//            [audioPlayer stop];
+//            [self playSound:streamURL];
+//        }
+//    } else {
+//        playings = [[NSCache alloc] init];
+//        [playings setObject:streamURL forKey:@"onPlay"];
+//        [self playSound:streamURL];
+//    }
+    
+    [audioPlayer stop];
+    [self playSound:streamURL];
+    
+    self.trackLabel.text = self.item[@"title"];
+    
+    NSURL *url = [[NSURL alloc] initWithString:self.item[@"artwork_url"]];
+    NSData *imgData = [NSData dataWithContentsOfURL:url];
+    UIImage *img = [UIImage imageWithData:imgData];
+    [self.albumCover setImage:img];
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-    PlayViewController *playVC = segue.destinationViewController;
-    playVC.track = [self.programItem objectAtIndex:indexPath.row];
-    playVC.contentMemory = self.tableView.contentOffset.y;
-    
-    // Set the front view controller to be the destination one
-    [self.revealViewController setFrontViewController:segue.destinationViewController];
-    
-    // Slide the front view controller back into place
-    [self.revealViewController revealToggleAnimated:YES];
-    
-    
+-(void) playSound:(NSString*)streamURL {
+    audioPlayer = [[STKAudioPlayer alloc] init];
+    [audioPlayer play: streamURL];
 }
 
 - (BOOL)prefersStatusBarHidden {

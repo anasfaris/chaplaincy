@@ -11,7 +11,9 @@
 @interface SermonsViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) NSArray *programItem;
+@property (strong, nonatomic) NSDictionary *item;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property float contentMemoryOffset;
+@property (strong, nonatomic) IBOutlet UILabel *trackLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *albumCover;
 
 @end

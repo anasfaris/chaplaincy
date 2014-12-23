@@ -40,7 +40,7 @@
     NSURL *url = [[NSURL alloc] initWithString:@"https://dl.dropboxusercontent.com/u/265794/homeData.json"];
     
     NSURLRequest *request = [NSURLRequest requestWithURL:url
-                                             cachePolicy:NSURLRequestReturnCacheDataElseLoad
+                                             cachePolicy:NSURLRequestUseProtocolCachePolicy
                                          timeoutInterval:30.0];
     
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
