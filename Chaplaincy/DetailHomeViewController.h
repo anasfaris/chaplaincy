@@ -13,5 +13,9 @@
 @property (strong, nonatomic) IBOutlet UIImageView *programImg;
 @property (strong, nonatomic) NSDictionary *program;
 @property float contentMemory;
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (strong, nonatomic) IBOutlet UIButton *backButton;
+
+
 
 @end

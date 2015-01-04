@@ -31,9 +31,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self.programImg setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@Program",self.program[@"programImage"]]]];
-    
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    
+    [self.programImg setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@Home",self.program[@"programImage"]]]];
+    
+    self.scrollView.contentSize = self.programImg.image.size;
+    self.programImg.frame = CGRectMake(0,0,self.programImg.image.size.width, self.programImg.image.size.height);
+    
+    // Bring button on top of table view
+    [self.view bringSubviewToFront:self.backButton];
 }
 - (IBAction)backPressed:(id)sender {
     [self performSegueWithIdentifier:@"GoBackToHomeSegue" sender:self];

@@ -32,6 +32,9 @@
     
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     
+    // Bring button on top of table view
+    [self.view bringSubviewToFront:self.hamburgerImg];
+    
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
@@ -59,6 +62,11 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)hamburgerPressed:(id)sender {
+    // Slide the front view controller back into place
+    [self.revealViewController revealToggleAnimated:YES];
 }
 
 #pragma mark Table View Delegate Methods

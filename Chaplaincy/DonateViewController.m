@@ -17,6 +17,7 @@
 @end
 
 @implementation DonateViewController
+float pos = 0;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -35,14 +36,16 @@
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     
     // Set button styles
-    [self.donateButton.layer setBorderWidth:1.0];
+//    [self.donateButton.layer setBorderWidth:0.9];
+//    
+//    UIColor *buttonBorderColor = [UIColor redColor];
+//
+//    [self.donateButton.layer setBorderColor: buttonBorderColor.CGColor];
     
-    UIColor *buttonBorderColor = [UIColor redColor];
-
-    [self.donateButton.layer setBorderColor: buttonBorderColor.CGColor];
+    pos = self.donateButton.frame.origin.y;
     
-    [self hideAllButtons];
-    [self animateButtons];
+//    [self hideAllButtons];
+//    [self animateButtons];
     
 }
 
@@ -52,13 +55,53 @@
 
 }
 
+- (IBAction)hamburgerPressed:(id)sender {
+    [self.revealViewController revealToggleAnimated:YES];
+}
+
+- (IBAction)fbPressed:(id)sender {
+    NSURL *fanPageURL = [NSURL URLWithString:@"fb://page?id=mcuoft"];
+    if (![[UIApplication sharedApplication] canOpenURL:fanPageURL])
+        fanPageURL =   [ NSURL URLWithString:@"https://www.facebook.com/mcuoft"];
+    
+    [[UIApplication sharedApplication] openURL:fanPageURL];
+}
+
+- (IBAction)twPressed:(id)sender {
+    NSURL *twitterURL = [NSURL URLWithString:@"twitter://user?screen_name=mcuoft"];
+    NSURL *tweetbotURL = [NSURL URLWithString:@"tweetbot:///user_profile/mcuoft"];
+    NSURL *defaultURL = [NSURL URLWithString:@"https://twitter.com/mcuoft"];
+    
+    if ([[UIApplication sharedApplication] canOpenURL:twitterURL])
+        [[UIApplication sharedApplication] openURL:twitterURL];
+    else if ([[UIApplication sharedApplication] canOpenURL:tweetbotURL])
+        [[UIApplication sharedApplication] openURL:tweetbotURL];
+    else
+        [[UIApplication sharedApplication] openURL:defaultURL];
+}
+
+- (IBAction)igPressed:(id)sender {
+    NSURL *instagramURL = [NSURL URLWithString:@"instagram://user?username=mcuoft"];
+    NSURL *defaultURL = [NSURL URLWithString:@"http://instagram.com/mcuoft"];
+    
+    if ([[UIApplication sharedApplication] canOpenURL:instagramURL])
+        [[UIApplication sharedApplication] openURL:instagramURL];
+    else
+        [[UIApplication sharedApplication] openURL:defaultURL];
+}
+
+- (IBAction)webPressed:(id)sender {
+    NSURL *webURL = [NSURL URLWithString:@"http://mcuoft.com"];
+    [[UIApplication sharedApplication] openURL:webURL];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)donateButtonClicked:(id)sender {
+- (IBAction)donateClicked:(id)sender {
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://mcuoft.com/donate/"]];
 }
 
@@ -87,7 +130,7 @@
                           delay:0.1
                         options:UIViewAnimationOptionCurveEaseOut animations:^(void) {
                             CGRect donateButtonFrame = self.donateButton.frame;
-                            donateButtonFrame.origin.y = 351;
+                            donateButtonFrame.origin.y = pos;
                             self.donateButton.frame = donateButtonFrame;
                         }
                      completion:nil];

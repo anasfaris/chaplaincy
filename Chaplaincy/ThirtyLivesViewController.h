@@ -14,5 +14,6 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property float contentMemoryOffset;
+@property (strong, nonatomic) IBOutlet UIButton *hamburgerImg;
 
 @end

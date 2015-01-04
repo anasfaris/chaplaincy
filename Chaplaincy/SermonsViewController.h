@@ -15,5 +15,16 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UILabel *trackLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *albumCover;
+@property (strong, nonatomic) NSString *streamURL;
+@property BOOL pausing;
+@property BOOL playing;
+
+@property (strong, nonatomic) IBOutlet UIButton *playButtonImg;
+@property (strong, nonatomic) IBOutlet UIButton *pauseButtonImg;
+
+@property (strong, nonatomic) IBOutlet UISlider *slider;
+@property (strong, nonatomic) IBOutlet UILabel *label;
+@property (strong, nonatomic) IBOutlet UIButton *hamburgerImg;
+
 
 @end

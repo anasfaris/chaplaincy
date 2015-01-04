@@ -33,6 +33,9 @@
     
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     
+    // Bring button on top of table view
+    [self.view bringSubviewToFront:self.hamburgerImg];
+    
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
@@ -40,7 +43,7 @@
     NSURL *url = [[NSURL alloc] initWithString:@"https://dl.dropboxusercontent.com/u/265794/homeData.json"];
     
     NSURLRequest *request = [NSURLRequest requestWithURL:url
-                                             cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                             cachePolicy:NSURLRequestReturnCacheDataElseLoad
                                          timeoutInterval:30.0];
     
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
@@ -113,6 +116,10 @@
     // Manually call segue to detail view controller
     [self performSegueWithIdentifier:@"GoToDetailHomeSegue" sender:self];
     
+}
+
+- (IBAction)hamburgerPressed:(id)sender {
+    [self.revealViewController revealToggleAnimated:YES];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

@@ -30,14 +30,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    NSURL *url = [NSURL URLWithString:@"https://calendly.com/spmleavers"];
+    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    
+    NSURL *url = [NSURL URLWithString:@"https://calendly.com/mcuoft"];
     NSURLRequest *requestURL = [NSURLRequest requestWithURL:url];
     [webView loadRequest:requestURL];
     [webView addSubview:self.activityInd];
     
     self.timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(loading) userInfo:nil repeats:YES];
-    
-    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
 }
 
 -(void)loading {
@@ -47,6 +47,11 @@
         [self.activityInd startAnimating];
     }
 }
+
+- (IBAction)hamburgerPressed:(id)sender {
+    [self.revealViewController revealToggleAnimated:YES];
+}
+
 
 - (void)didReceiveMemoryWarning
 {
