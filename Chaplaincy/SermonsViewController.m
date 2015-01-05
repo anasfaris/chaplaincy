@@ -47,9 +47,7 @@ NSTimer* timer;
     [self setupTimer];
     [self tick];
     
-    if (STKAudioPlayerStatePlaying) {
-        [self keepPlaying];
-    }
+    [self updateControls];
     
     //AFNetworking Method
     NSURL *url = [[NSURL alloc] initWithString:@"http://api.soundcloud.com/users/44839796/tracks.json?client_id=906e9745181f3cee9d62e886490b164b"];
@@ -114,8 +112,6 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     
     [self tick];
     
-    NSLog(@"%.02fs", audioPlayer.duration);
-    
     self.trackLabel.text = self.item[@"title"];
     
     NSURL *url = [[NSURL alloc] initWithString:self.item[@"artwork_url"]];
@@ -123,18 +119,36 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     UIImage *img = [UIImage imageWithData:imgData];
     [self.albumCover setImage:img];
 }
+
 - (IBAction)sliderChanged:(id)sender {
     if (!audioPlayer) {
         return;
     }
     
-    NSLog(@"Slider Changed: %f", self.slider.value);
+//    NSLog(@"Slider Changed: %f", self.slider.value);
     
     [audioPlayer seekToTime:self.slider.value];
 }
 
--(void) setupTimer
-{
+-(void) updateControls {
+    if (audioPlayer == nil) {
+        self.playButtonImg.hidden = false;
+        self.pauseButtonImg.hidden = true;
+        self.playButtonImg.enabled = false;
+    } else if (audioPlayer.state == STKAudioPlayerStatePlaying) {
+        self.playButtonImg.hidden = true;
+        self.pauseButtonImg.hidden = false;
+    } else if (audioPlayer.state == STKAudioPlayerStatePaused) {
+        self.playButtonImg.hidden = false;
+        self.playButtonImg.enabled = true;
+        self.pauseButtonImg.hidden = true;
+    } else {
+        self.playButtonImg.hidden = true;
+        self.pauseButtonImg.hidden = false;
+    }
+}
+
+-(void) setupTimer {
     timer = [NSTimer timerWithTimeInterval:0.001 target:self selector:@selector(tick) userInfo:nil repeats:YES];
     
     [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
@@ -175,8 +189,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         self.slider.value = audioPlayer.progress;
         
         self.label.text = [NSString stringWithFormat:@"%@ - %@", [self formatTimeFromSeconds:audioPlayer.progress], [self formatTimeFromSeconds:audioPlayer.duration]];
-    }
-    else {
+    } else {
         self.slider.value = 0;
         self.slider.minimumValue = 0;
         self.slider.maximumValue = 0;
@@ -186,38 +199,40 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 }
 
 - (IBAction)playButton:(id)sender {
-    if (self.pausing) {
+    if (audioPlayer.state == STKAudioPlayerStatePaused) {
         [audioPlayer resume];
-        self.pausing = false;
     } else {
         [self playSound];
     }
-    self.playButtonImg.hidden = true;
-    self.pauseButtonImg.hidden = false;
+    [self updateControls];
+//    self.playButtonImg.hidden = true;
+//    self.pauseButtonImg.hidden = false;
 }
 
 
 - (IBAction)pauseButton:(id)sender {
-    self.pausing = true;
+//    self.pausing = true;
     [audioPlayer pause];
-    self.pauseButtonImg.hidden = true;
-    self.playButtonImg.hidden = false;
+//    self.pauseButtonImg.hidden = true;
+//    self.playButtonImg.hidden = false;
+    [self updateControls];
 }
 
 -(void) playSound {
+    
+    
     audioPlayer = [[STKAudioPlayer alloc] init];
     [audioPlayer play: self.streamURL];
-    self.playButtonImg.hidden = true;
-    self.pauseButtonImg.hidden = false;
+//    self.playButtonImg.hidden = true;
+//    self.pauseButtonImg.hidden = false;
     
-    self.playing = true;
+//    self.playing = true;
     //TOFIX: pause-stop-play
+    [self updateControls];
 }
 
--(void) keepPlaying {
-    self.playButtonImg.hidden = true;
-    self.pauseButtonImg.hidden = false;
-
+- (IBAction)mcSoundcloudClicked:(id)sender {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://soundcloud.com/mcuoft"]];
 }
 
 - (BOOL)prefersStatusBarHidden {

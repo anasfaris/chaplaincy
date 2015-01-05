@@ -36,7 +36,13 @@
     // 2. Fetch the menu items
     self.menuItems = [[[MenuModel alloc] init] getMenuItems];
     
-    [self.tableView setContentInset:UIEdgeInsetsMake(64, 0, 0, 0)];
+    if ([[UIScreen mainScreen] bounds].size.height >= 568) {
+        [self.tableView setContentInset:UIEdgeInsetsMake(64, 0, 0, 0)];
+    }
+    else {
+        //iphone 3.5 inch screen
+        [self.tableView setContentInset:UIEdgeInsetsMake(32, 0, 0, 0)];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -48,7 +54,7 @@
 #pragma mark Table View Delegate Methods
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 73.0;
+    return 70.0;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
