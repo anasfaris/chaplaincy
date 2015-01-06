@@ -454,12 +454,12 @@
             <objects>
                 <viewController id="Exj-aV-Asf" customClass="ThirtyLivesViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pbM-F1-MBS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="189" sectionHeaderHeight="22" sectionFooterHeight="22" id="4WY-S7-ten">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ThirtyMenuCell" rowHeight="189" id="4Q8-XQ-IBV">
@@ -494,7 +494,7 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="aeG-qz-bY5">
-                                <rect key="frame" x="16" y="420" width="45" height="45"/>
+                                <rect key="frame" x="16" y="508" width="45" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <state key="normal" image="hamburger">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -506,7 +506,7 @@
                         </subviews>
                     </view>
                     <navigationItem key="navigationItem" id="5xZ-Rb-Bsg"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="hamburgerImg" destination="aeG-qz-bY5" id="3Zm-8O-ARN"/>
                         <outlet property="tableView" destination="4WY-S7-ten" id="G2S-eV-nEg"/>
@@ -569,7 +569,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4o3-De-6cB">
-                                <rect key="frame" x="95" y="73" width="40" height="40"/>
+                                <rect key="frame" x="96" y="73" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                 <state key="normal" title="Play" image="play">
@@ -595,7 +595,7 @@
                                 </connections>
                             </slider>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="kP0-6S-Cfp">
-                                <rect key="frame" x="95" y="73" width="40" height="40"/>
+                                <rect key="frame" x="96" y="73" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Pause" image="pause">
@@ -606,7 +606,7 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image1" id="NfL-9b-zgb">
-                                <rect key="frame" x="16" y="83" width="73" height="73"/>
+                                <rect key="frame" x="16" y="74" width="73" height="73"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ilI-sy-2jI">
@@ -686,19 +686,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tFs-ys-k1G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-841" y="-600"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="rcj-pl-FKk">
-            <objects>
-                <viewController id="izW-pB-CDj" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="JBM-QG-BcF">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vTD-5b-RW9" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
         </scene>
     </scenes>
     <resources>

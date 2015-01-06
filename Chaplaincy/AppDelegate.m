@@ -7,11 +7,23 @@
 //
 
 #import "AppDelegate.h"
+#import "STKAudioPlayer.h"
+#import <AVFoundation/AVFoundation.h>
+
+@interface AppDelegate()
+{
+    STKAudioPlayer* audioPlayer;
+}
+@end
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    NSError* error;
+    
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&error];
+    
     NSURLCache *cache = [[NSURLCache alloc] initWithMemoryCapacity:4 * 1024 * 1024
                                                          diskCapacity:32 * 1024 * 1024
                                                              diskPath:@"app_cache"];
