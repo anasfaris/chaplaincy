@@ -9,10 +9,7 @@
 #import "DonateViewController.h"
 #import "SWRevealViewController.h"
 
-@interface DonateViewController () {
-    ADBannerView *_adView;
-    BOOL _bannerIsVisible;
-}
+@interface DonateViewController ()
 
 @end
 
@@ -60,7 +57,7 @@ float pos = 0;
 }
 
 - (IBAction)fbPressed:(id)sender {
-    NSURL *fanPageURL = [NSURL URLWithString:@"fb://page?id=mcuoft"];
+    NSURL *fanPageURL = [NSURL URLWithString:@"fb://page?id=305946819484281"];
     if (![[UIApplication sharedApplication] canOpenURL:fanPageURL])
         fanPageURL =   [ NSURL URLWithString:@"https://www.facebook.com/mcuoft"];
     
@@ -105,12 +102,6 @@ float pos = 0;
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://mcuoft.com/donate/"]];
 }
 
-#pragma mark Mail Compose Delegate Methods
-
--(void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
-    // Dismiss the compose controller
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
 - (IBAction)menuButtonTapped:(id)sender {
     [self.revealViewController revealToggleAnimated:YES];
 }

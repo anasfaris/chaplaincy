@@ -40,7 +40,7 @@
     self.tableView.dataSource = self;
     
     //AFNetworking Method
-    NSURL *url = [[NSURL alloc] initWithString:@"https://dl.dropboxusercontent.com/u/265794/lives30.json"];
+    NSURL *url = [[NSURL alloc] initWithString:@"https://dl.dropboxusercontent.com/u/265794/MC/JSON/lives.json"];
     
     NSURLRequest *request = [NSURLRequest requestWithURL:url
                                             cachePolicy:NSURLRequestReturnCacheDataElseLoad

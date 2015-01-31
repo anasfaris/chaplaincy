@@ -10,7 +10,7 @@
 #import <MessageUI/MessageUI.h>
 #import <iAd/iAd.h>
 
-@interface DonateViewController : UIViewController<MFMailComposeViewControllerDelegate>
+@interface DonateViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UIButton *donateButton;
 

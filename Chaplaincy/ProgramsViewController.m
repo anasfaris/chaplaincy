@@ -9,12 +9,15 @@
 #import "ProgramsViewController.h"
 #import "SWRevealViewController.h"
 #import "AFHTTPRequestOperation.h"
+#import "UIImageView+WebCache.h"
 
 @interface ProgramsViewController ()
 
 @end
 
 @implementation ProgramsViewController
+
+UIRefreshControl *refreshControl;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,11 +41,37 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
+    refreshControl = [[UIRefreshControl alloc]init];
+    [self.tableView addSubview:refreshControl];
+    [refreshControl addTarget:self action:@selector(refreshTable) forControlEvents:UIControlEventValueChanged];
+    
     //AFNetworking Method
-    NSURL *url = [[NSURL alloc] initWithString:@"https://dl.dropboxusercontent.com/u/265794/programData.json"];
+    [self fetchData:NO];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (void)refreshTable {
+    [self fetchData:YES];
+}
+
+-(void)fetchData:(BOOL)isRefreshing {
+    //AFNetworking Method
+    NSURL *url = [[NSURL alloc] initWithString:@"https://dl.dropboxusercontent.com/u/265794/MC/JSON/programming.json"];
+    NSUInteger cPolicy;
+    
+    if (isRefreshing) {
+        cPolicy = NSURLRequestUseProtocolCachePolicy;
+    } else {
+        cPolicy = NSURLRequestReturnCacheDataElseLoad;
+    }
     
     NSURLRequest *request = [NSURLRequest requestWithURL:url
-                                             cachePolicy:NSURLRequestReturnCacheDataElseLoad
+                                             cachePolicy:cPolicy
                                          timeoutInterval:30.0];
     
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
@@ -50,18 +79,13 @@
     operation.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         self.programItem = responseObject;
+        if (isRefreshing) [refreshControl endRefreshing];
         [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error: %@", error.localizedDescription);
     }];
     
     [operation start];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)hamburgerPressed:(id)sender {
@@ -83,25 +107,10 @@
     // Get program item that it's asking for
     NSDictionary *item = self.programItem[indexPath.row];
     
-    // Set the program item and details
-    //programCell.textLabel.text = item.title;
-    UILabel *titleLabel = (UILabel*)[programCell.contentView viewWithTag:1];
-    UILabel *dateLabel = (UILabel*)[programCell.contentView viewWithTag:2];
-    UILabel *timeLabel = (UILabel*)[programCell.contentView viewWithTag:3];
-    UILabel *locationLabel = (UILabel*)[programCell.contentView viewWithTag:4];
-    UILabel *descriptionLabel = (UILabel*)[programCell.contentView viewWithTag:5];
-    
     // Set the image
     UIImageView *imageView = (UIImageView*)[programCell.contentView viewWithTag:6];
-    NSString *fileName = item[@"programImage"];
-    [imageView setImage:[UIImage imageNamed:fileName]];
-    
-    titleLabel.text = item[@"programName"];
-    dateLabel.text = item[@"programDate"];
-    timeLabel.text = item[@"programDay"];
-    locationLabel.text = item[@"programLocation"];
-    descriptionLabel.text = item[@"programDescription"];
-    [descriptionLabel sizeToFit];
+//    NSString *fileName = item[@"programImage"];
+    [imageView sd_setImageWithURL:[NSURL URLWithString: item[@"programImgUrl"]]];
     
     return programCell;
 }

@@ -10,12 +10,15 @@
 #import "DetailHomeViewController.h"
 #import "SWRevealViewController.h"
 #import "AFHTTPRequestOperation.h"
+#import "UIImageView+WebCache.h"
 
 @interface HomeViewController ()
 
 @end
 
 @implementation HomeViewController
+
+UIRefreshControl *refreshControl;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -39,11 +42,39 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
+    refreshControl = [[UIRefreshControl alloc]init];
+    [self.tableView addSubview:refreshControl];
+    [refreshControl addTarget:self action:@selector(refreshTable) forControlEvents:UIControlEventValueChanged];
+    
+    
+    
     //AFNetworking Method
-    NSURL *url = [[NSURL alloc] initWithString:@"https://dl.dropboxusercontent.com/u/265794/homeData.json"];
+    [self fetchData:NO];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (void)refreshTable {
+    [self fetchData:YES];
+}
+
+-(void)fetchData:(BOOL)isRefreshing {
+    //AFNetworking Method
+    NSURL *url = [[NSURL alloc] initWithString:@"https://dl.dropboxusercontent.com/u/265794/MC/JSON/home.json"];
+    NSUInteger cPolicy;
+    
+    if (isRefreshing) {
+        cPolicy = NSURLRequestUseProtocolCachePolicy;
+    } else {
+        cPolicy = NSURLRequestReturnCacheDataElseLoad;
+    }
     
     NSURLRequest *request = [NSURLRequest requestWithURL:url
-                                             cachePolicy:NSURLRequestReturnCacheDataElseLoad
+                                             cachePolicy:cPolicy
                                          timeoutInterval:30.0];
     
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
@@ -51,7 +82,8 @@
     operation.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         self.homeItem = responseObject;
-        if (self.contentMemoryOffset) {
+        if (isRefreshing) [refreshControl endRefreshing];
+        else if (self.contentMemoryOffset) {
             [self.tableView setContentOffset:CGPointMake(0, self.contentMemoryOffset)];
         }
         [self.tableView reloadData];
@@ -60,12 +92,6 @@
     }];
     
     [operation start];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark Table View Delegate
@@ -101,13 +127,9 @@
     
     titleLabel.attributedText = attributedString;
     
-    // Set the program item and details
-    //homeCell.textLabel.text = item.title;
-    
     // Set the image
     UIImageView *imageView = (UIImageView*)[homeCell.contentView viewWithTag:1];
-    NSString *fileName = item[@"programImage"];
-    [imageView setImage:[UIImage imageNamed:fileName]];    
+    [imageView sd_setImageWithURL:[NSURL URLWithString: item[@"homeImgUrl"]]];
     
     return homeCell;
 }
