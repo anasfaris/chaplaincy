@@ -43,7 +43,7 @@
     [self.descriptionLabel sizeToFit];
     
     // Set content size of scrollview
-    self.detailScrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.descriptionLabel.frame.size.height + 30);
+    self.detailScrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.descriptionLabel.frame.size.height + 75);
     
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
 }

@@ -41,6 +41,7 @@
 		A8F779361946168200F01C82 /* DetailHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8F779351946168200F01C82 /* DetailHomeViewController.m */; };
 		D32F6A22F657B52337C670EE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A65ACD0C8C0E78AB39A8369D /* libPods.a */; };
 		EE8B4B491A41C609006F2538 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE8B4B481A41C609006F2538 /* AVFoundation.framework */; };
+		EEE9096E1A7C89EF00B78217 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEE9096D1A7C89EF00B78217 /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +109,7 @@
 		A8F779351946168200F01C82 /* DetailHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailHomeViewController.m; sourceTree = "<group>"; };
 		EE8B4B481A41C609006F2538 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		EE8B4B4A1A41CA46006F2538 /* libPods-CocoaSoundCloudAPI.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-CocoaSoundCloudAPI.a"; path = "Pods/build/Debug-iphoneos/libPods-CocoaSoundCloudAPI.a"; sourceTree = "<group>"; };
+		EEE9096D1A7C89EF00B78217 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EEE9096E1A7C89EF00B78217 /* SystemConfiguration.framework in Frameworks */,
 				EE8B4B491A41C609006F2538 /* AVFoundation.framework in Frameworks */,
 				A8D78BB31942182900225A9F /* iAd.framework in Frameworks */,
 				A81D4EB2193E5BB200F5A571 /* MessageUI.framework in Frameworks */,
@@ -227,6 +230,7 @@
 		A8EFE4E6193CCD550005A144 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EEE9096D1A7C89EF00B78217 /* SystemConfiguration.framework */,
 				EE8B4B4A1A41CA46006F2538 /* libPods-CocoaSoundCloudAPI.a */,
 				EE8B4B481A41C609006F2538 /* AVFoundation.framework */,
 				A8D78BB21942182900225A9F /* iAd.framework */,

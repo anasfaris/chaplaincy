@@ -47,6 +47,8 @@ UIRefreshControl *refreshControl;
     
     //AFNetworking Method
     [self fetchData:NO];
+    
+    self.tableView.frame = self.view.bounds;
 }
 
 - (void)didReceiveMemoryWarning

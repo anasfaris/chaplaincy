@@ -67,6 +67,9 @@ NSTimer* timer;
     }];
     
     [operation start];
+    
+    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 140, 0);
+
 }
 
 - (void)didReceiveMemoryWarning

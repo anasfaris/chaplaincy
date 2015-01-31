@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Reachability.h"
 
-@interface HomeViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
+@interface HomeViewController : UIViewController<UITableViewDelegate, UITableViewDataSource> {
+    Reachability *internetReachableFoo;
+}
 
 @property (strong, nonatomic) NSArray *homeItem;
 

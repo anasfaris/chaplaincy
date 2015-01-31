@@ -13,7 +13,6 @@
 #import "UIImageView+WebCache.h"
 
 @interface HomeViewController ()
-
 @end
 
 @implementation HomeViewController
@@ -46,10 +45,21 @@ UIRefreshControl *refreshControl;
     [self.tableView addSubview:refreshControl];
     [refreshControl addTarget:self action:@selector(refreshTable) forControlEvents:UIControlEventValueChanged];
     
-    
-    
-    //AFNetworking Method
     [self fetchData:NO];
+    
+    // To be implemented in version 1.1
+    /*
+    Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
+    if (networkStatus == NotReachable) {
+        NSLog(@"There IS NO internet connection");
+    } else {
+        NSLog(@"There IS internet connection");
+        [self fetchData:YES];
+    }
+     */
+
+    self.tableView.frame = self.view.bounds;
 }
 
 - (void)didReceiveMemoryWarning
