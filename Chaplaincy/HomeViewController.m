@@ -11,6 +11,7 @@
 #import "SWRevealViewController.h"
 #import "AFHTTPRequestOperation.h"
 #import "UIImageView+WebCache.h"
+#import "UIImageView+UIActivityIndicatorForSDWebImage.h"
 
 @interface HomeViewController ()
 @end
@@ -74,7 +75,7 @@ UIRefreshControl *refreshControl;
 
 -(void)fetchData:(BOOL)isRefreshing {
     //AFNetworking Method
-    NSURL *url = [[NSURL alloc] initWithString:@"https://dl.dropboxusercontent.com/u/265794/MC/JSON/home.json"];
+    NSURL *url = [[NSURL alloc] initWithString:@"https://dl.dropboxusercontent.com/u/10553577/MC/JSON/home.json"];
     NSUInteger cPolicy;
     
     if (isRefreshing) {
@@ -139,7 +140,7 @@ UIRefreshControl *refreshControl;
     
     // Set the image
     UIImageView *imageView = (UIImageView*)[homeCell.contentView viewWithTag:1];
-    [imageView sd_setImageWithURL:[NSURL URLWithString: item[@"homeImgUrl"]]];
+    [imageView setImageWithURL:[NSURL URLWithString: item[@"homeImgUrl"]] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     
     return homeCell;
 }

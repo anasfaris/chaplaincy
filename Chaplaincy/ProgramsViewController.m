@@ -10,6 +10,7 @@
 #import "SWRevealViewController.h"
 #import "AFHTTPRequestOperation.h"
 #import "UIImageView+WebCache.h"
+#import "UIImageView+UIActivityIndicatorForSDWebImage.h"
 
 @interface ProgramsViewController ()
 
@@ -63,7 +64,7 @@ UIRefreshControl *refreshControl;
 
 -(void)fetchData:(BOOL)isRefreshing {
     //AFNetworking Method
-    NSURL *url = [[NSURL alloc] initWithString:@"https://dl.dropboxusercontent.com/u/265794/MC/JSON/programming.json"];
+    NSURL *url = [[NSURL alloc] initWithString:@"https://dl.dropboxusercontent.com/u/10553577/MC/JSON/programming.json"];
     NSUInteger cPolicy;
     
     if (isRefreshing) {
@@ -112,7 +113,7 @@ UIRefreshControl *refreshControl;
     // Set the image
     UIImageView *imageView = (UIImageView*)[programCell.contentView viewWithTag:6];
 //    NSString *fileName = item[@"programImage"];
-    [imageView sd_setImageWithURL:[NSURL URLWithString: item[@"programImgUrl"]]];
+    [imageView setImageWithURL:[NSURL URLWithString: item[@"programImgUrl"]] usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     
     return programCell;
 }

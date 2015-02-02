@@ -11,6 +11,7 @@
 #import "SWRevealViewController.h"
 #import "ThirtyLivesViewController.h"
 #import "UIImageView+WebCache.h"
+#import "UIImageView+UIActivityIndicatorForSDWebImage.h"
 
 @interface DetailHomeViewController ()
 
@@ -37,12 +38,14 @@
 //    [self.programImg setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@Home",self.program[@"programImage"]]]];
 //    [self.programImg sd_setImageWithURL:[NSURL URLWithString: self.program[@"detailImgUrl"]]];
 
-    [self.programImg sd_setImageWithURL:[NSURL URLWithString: self.program[@"detailImgUrl"]]
+    __weak typeof(self) weakSelf = self;
+    
+    [self.programImg setImageWithURL:[NSURL URLWithString: self.program[@"detailImgUrl"]]
                               completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-                                  self.programImg.image = [self adjustImageSizeWhenCropping:self.programImg.image];
-                                  self.scrollView.contentSize = self.programImg.image.size;
-                                  self.programImg.frame = CGRectMake(0,0,self.programImg.image.size.width, self.programImg.image.size.height);
-    }];
+                                  weakSelf.programImg.image = [weakSelf adjustImageSizeWhenCropping:weakSelf.programImg.image];
+                                  weakSelf.scrollView.contentSize = weakSelf.programImg.image.size;
+                                  weakSelf.programImg.frame = CGRectMake(0,0,weakSelf.programImg.image.size.width, weakSelf.programImg.image.size.height);
+                              } usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
 
     
     
