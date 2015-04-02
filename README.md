@@ -1,4 +1,6 @@
-chaplaincy
+Chaplaincy
 ==========
 
-iPhone App for Muslim Chaplaincy
+The official iPhone App for Muslim Chaplaincy
+
+Click <a href="https://itunes.apple.com/us/app/id955671671?mt=8">here</a> to download the app.
