@@ -1,7 +1,0 @@
-source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '8.0'
-pod 'AFNetworking', '~> 2.5'
-pod 'StreamingKit', '~> 0.1'
-pod 'SDWebImage', '~> 3.7'
-pod 'Reachability', '~> 3.2'
-pod 'UIActivityIndicator-for-SDWebImage', '~> 1.2'
